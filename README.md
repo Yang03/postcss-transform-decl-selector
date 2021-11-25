@@ -1,14 +1,14 @@
 # install
 
 ```
-npm install postcss-transform-decl-selector --save-dev
+npm install postcss-transform-selector --save-dev
 ```
 
 ### demo
 ```
  // postcss.config.js
   {
-    'postcss-transform-decl-selector': {
+    'postcss-transform-selector': {
       selector: ':root',
         transform: (decl) => {
           var oldValue = decl.value
