@@ -8,7 +8,7 @@ type Rule = {
 function transform(root: Root, rule: Rule) {
   root.walkDecls((decl: Declaration) => {
      // @ts-ignore
-    if (rule?.selector.includes(decl?.parent?.selector!)) {
+    if (rule?.selector?.includes(decl?.parent?.selector)) {
       rule.transform(decl);
     }
   })
