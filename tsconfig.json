@@ -5,10 +5,11 @@
     "rootDir": "src",
     "outDir": "dist",
     "module": "CommonJS",
-    "--strictNullChecks": true
+    "strictNullChecks": true,
+    "types": ["node"]
   },
   "exclude": [
     "**/dist",
     "**/node_modules"
   ]
-} 
+}
