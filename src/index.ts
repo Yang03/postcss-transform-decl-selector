@@ -5,10 +5,23 @@ type Rule = {
   transform: Function;
 }
 
+function match(rule: string | Array<string>, selector: string): boolean {
+  if (Object.prototype.toString.call(rule) === '[object String]' && typeof rule === 'string') {
+    if (rule.startsWith('^')) {
+        return selector.startsWith(rule.replace('^', '.'));
+    }
+    return rule.includes(selector);
+  }
+  if (Array.isArray(rule)) {
+    return rule.some((r: string) => match(r, selector));
+  }
+  return false;
+}
+
 function transform(root: Root, rule: Rule) {
   root.walkDecls((decl: Declaration) => {
      // @ts-ignore
-    if (rule?.selector?.includes(decl?.parent?.selector)) {
+    if (match(rule?.selector, decl?.parent?.selector)) {
       rule.transform(decl);
     }
   })
