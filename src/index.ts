@@ -8,7 +8,7 @@ type Rule = {
 function match(rule: string | Array<string>, selector: string): boolean {
   if (Object.prototype.toString.call(rule) === '[object String]' && typeof rule === 'string') {
     if (rule.startsWith('^')) {
-        return selector.startsWith(rule.replace('^', '.'));
+        return selector?.startsWith(rule.replace('^', '.'));
     }
     return rule.includes(selector);
   }
